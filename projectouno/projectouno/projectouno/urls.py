@@ -23,6 +23,8 @@ urlpatterns = [
     path('firstApp/', include('firstApp.urls')),
     path('admin/', admin.site.urls),
     path('', views.hello_world, name = 'home'),
+    path('company_information', views.company_information, name = 'company_information'),
+
 ]
 
 # añade assets en modo debug = True

@@ -10,6 +10,7 @@ class LessonInline(admin.TabularInline):
     model = Lesson
 
 class CourseAdmin(admin.ModelAdmin):
+    
     inlines = [LessonInline, ]
 
 

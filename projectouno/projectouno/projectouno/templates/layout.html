@@ -1,4 +1,6 @@
 {% load static from staticfiles%}
+{% load firstApp_extras %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,12 +15,12 @@
         
         <nav> 
             <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'company_information' %}">Company information</a>
             <a href="{% url 'firstApp:list' %}">Cursos</a>
 
         </nav>
+        <p>El último curso registrado es : {% last_course %}</p>
         {% block content %}{% endblock %}
-
-
     </div>
 
 </body>
