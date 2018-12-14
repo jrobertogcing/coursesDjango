@@ -5,7 +5,7 @@
 {% block content %} 
 
 <div class="cards">
-    {% for course in firstApp %}
+    {% for course in courses_in_db %}
         <div class="card">
             <header><a href="{% url 'firstApp:detail' pk=course.pk %}">{{ course.title }} </a></header>
             <div class="card-copy">

@@ -4,15 +4,28 @@ from django.http import HttpResponse
 # Create your views here.
 from.models import Course, Lesson
 
+from .import forms
+
+
 # def course_list(request):
 #     firstApp = Course.objects.all()
 #     response = ', '.join([str(course) for course in firstApp])
 
 #     return HttpResponse(response)
 
+def course_form_view(request):
+    form = forms.CoursesForm(request.POST)
+    if form.is_valid():
+        print("Validation success")
+        print("TITLE: " +form.cleaned_data['title'])
+        print("DESCRIPTION: " +form.cleaned_data['title'])
+        print("gato matute")
+
+    return render(request, 'firstApp/course_form.html', {'form': form})
+
 def course_list(request):
-    firstApp = Course.objects.all()
-    return render(request, 'firstApp/course_list.html', {'firstApp': firstApp}) #aqui se pasa un diccionario con las variables
+    courses_in_db = Course.objects.all()
+    return render(request, 'firstApp/course_list.html', {'courses_in_db': courses_in_db}) #aqui se pasa un diccionario con las variables
 
 
 def course_detail(request, pk):
