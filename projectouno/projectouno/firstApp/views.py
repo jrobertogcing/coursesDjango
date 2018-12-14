@@ -6,6 +6,7 @@ from.models import Course, Lesson
 
 from .import forms
 
+from .forms import NewCourseForm
 
 # def course_list(request):
 #     firstApp = Course.objects.all()
@@ -13,15 +14,22 @@ from .import forms
 
 #     return HttpResponse(response)
 
-def course_form_view(request):
-    form = forms.CoursesForm(request.POST)
-    if form.is_valid():
-        print("Validation success")
-        print("TITLE: " +form.cleaned_data['title'])
-        print("DESCRIPTION: " +form.cleaned_data['title'])
-        print("gato matute")
+
+def course_new(request):
+
+    form = NewCourseForm()
+
+    if request.method == "POST":
+        form = NewCourseForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return course_list(request)
+        else:
+            print("ERROR FORM INVALID")
 
     return render(request, 'firstApp/course_form.html', {'form': form})
+
 
 def course_list(request):
     courses_in_db = Course.objects.all()
@@ -36,4 +44,12 @@ def course_detail(request, pk):
 def lesson_detail(request, course_pk, lesson_pk):
     lesson = get_object_or_404(Lesson, course_id = course_pk, pk = lesson_pk)
     return render(request, 'firstApp/lesson_detail.html', {'lesson': lesson})
+
+
+
+
+
+
+
+
 
