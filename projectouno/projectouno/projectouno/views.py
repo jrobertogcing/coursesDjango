@@ -9,7 +9,9 @@ def hello_world(request):
     return render(request, 'home.html')
 
 def company_information(request):
-    return render(request, 'company_information.html')
+
+    context_dict = {'text': 'esto es un texto agregado en views.py/company_information', 'number': 100, }
+    return render(request, 'company_information.html', context_dict)
 
 
     
