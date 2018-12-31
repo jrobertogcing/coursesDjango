@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "init/bin/python"
+    "python.pythonPath": "projectouno/bin/python"
+
+    // ${workspaceFolder}/env/bin/python
+
+    // "python.pythonPath": "/Users/josegonzalez/Documents/DJANGO\ EJERCICIOS/ProyectoOneGit/coursesDjango/projectouno"
+
 }

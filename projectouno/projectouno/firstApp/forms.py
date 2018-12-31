@@ -10,7 +10,12 @@ class CoursesForm(forms.Form):
 
 
 class NewCourseForm(forms.ModelForm):
+    
     class Meta():
         model = Course
-        fields = '__all__'
+        fields = ('title', 'description')
 
+    def __init__(self, *args, **kwargs):
+        super(NewCourseForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].disabled = True
