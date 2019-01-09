@@ -1,0 +1,2 @@
+Esta es la explicación del algoritmo de control , Se ignora en git.
+
